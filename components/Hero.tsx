@@ -7,29 +7,39 @@ const Hero = () => {
     <section className="max-w-7xl mx-auto bg-base-100 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 px-8 py-8 lg:py-20">
       <div className="flex flex-col gap-10 lg:gap-14 items-center justify-center text-center lg:text-left lg:items-start">
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight">
-          Launch your Agentic SaaS in days, not weeks
+          Transform Your Business Vision Into Reality
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          FeNAgO empowers students, developers, startups, and entrepreneurs to build
-          fully agentic SaaS solutions at lightning speed by handling security
-          (logins & registration), database setup, SEO, and monetization right out
-          of the box—powered by Next.js, Tailwind, and React. All you bring is
-          your idea!
+          The only business planning system that turns scattered ideas into 
+          market-ready execution through proven, modular frameworks. Join 10,000+ 
+          entrepreneurs who've transformed their vision into profitable businesses 
+          with enterprise-grade planning that actually works.
         </p>
-        <a
-          href="https://fenago.com"
-          className="btn btn-primary btn-wide"
-        >
-          Get {config.appName}
-        </a>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#pricing"
+            className="btn btn-primary btn-wide"
+          >
+            Start Your Transformation
+          </a>
+          <a
+            href="#demo"
+            className="btn btn-outline btn-wide"
+          >
+            Watch Demo
+          </a>
+        </div>
+        <div className="text-sm opacity-60 mt-2">
+          ✅ Trusted by 10,000+ entrepreneurs • 30-day money-back guarantee
+        </div>
 
         <TestimonialsAvatars priority={true} />
       </div>
       <div className="lg:w-full">
         <Image
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
-          alt="FeNAgO product demo"
-          className="w-full"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+          alt="VIBE Business Planning System Dashboard"
+          className="w-full rounded-lg shadow-2xl"
           priority={true}
           width={500}
           height={500}

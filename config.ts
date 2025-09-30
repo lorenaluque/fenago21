@@ -3,12 +3,12 @@ import { ConfigProps } from "./types/config";
 
 const config = {
   // REQUIRED
-  appName: "FeNAgO",
+  appName: "VIBE",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
+    "Transform Your Business Vision Into Reality - The enterprise-grade business planning system that turns scattered ideas into market-ready execution.",
   // REQUIRED (no https://, not trailing slash at the end, just the naked domain)
-  domainName: "fenago.com",
+  domainName: "vibeplan.com",
   crisp: {
     // Crisp website ID. IF YOU DON'T USE CRISP: just remove this => Then add a support email in this config file (resend.supportEmail) otherwise customer support won't work.
     id: "",
@@ -27,18 +27,19 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for small projects",
+        description: "Perfect for getting started with business planning",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 99,
+        price: 97,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 149,
+        priceAnchor: 197,
         features: [
           {
-            name: "NextJS boilerplate",
+            name: "Complete VIBE Framework Access",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
+          { name: "6 Planning Modules" },
+          { name: "Avatar Research Templates" },
+          { name: "Basic Implementation Guides" },
+          { name: "Email Support" },
         ],
       },
       {
@@ -48,19 +49,41 @@ const config = {
             : "price_456",
         // This plan will look different on the pricing page, it will be highlighted. You can only have one plan with isFeatured: true
         isFeatured: true,
-        name: "Advanced",
-        description: "You need more power",
-        price: 149,
-        priceAnchor: 299,
+        name: "Professional",
+        description: "Complete system with premium templates and tools",
+        price: 297,
+        priceAnchor: 497,
         features: [
           {
-            name: "Agentic SaaS app NextJS boilerplate",
+            name: "Everything in Starter",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
-          { name: "1 year of updates" },
-          { name: "24/7 support" },
+          { name: "Premium Templates Library" },
+          { name: "Advanced Market Analysis Tools" },
+          { name: "Financial Planning Spreadsheets" },
+          { name: "Implementation Roadmap Generator" },
+          { name: "Priority Support" },
+          { name: "Quarterly Strategy Sessions" },
+        ],
+      },
+      {
+        priceId:
+          process.env.NODE_ENV === "development"
+            ? "price_1O5KtcAxyNprDp7iftKnrrpw"
+            : "price_789",
+        name: "Enterprise",
+        description: "Complete transformation with personal coaching",
+        price: 997,
+        priceAnchor: 1497,
+        features: [
+          {
+            name: "Everything in Professional",
+          },
+          { name: "1-on-1 Strategy Coaching (4 Sessions)" },
+          { name: "Custom Business Plan Review" },
+          { name: "Direct Access to VIBE Experts" },
+          { name: "Implementation Accountability" },
+          { name: "Lifetime Updates" },
+          { name: "VIP Community Access" },
         ],
       },
     ],
@@ -73,11 +96,11 @@ const config = {
   },
   resend: {
     // REQUIRED — Email 'From' field to be used when sending magic login links
-    fromNoReply: `FeNAgO <noreply@resend.fenago.com>`,
+    fromNoReply: `VIBE <noreply@vibeplan.com>`,
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
-    fromAdmin: `Dr Lee at FeNAgO <drlee@resend.fenago.com>`,
+    fromAdmin: `VIBE Team <support@vibeplan.com>`,
     // Email shown to customer if they need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: "socrates.73@gmail.com",
+    supportEmail: "support@vibeplan.com",
   },
   colors: {
     // REQUIRED — The DaisyUI theme to use (added to the main layout.js). Leave blank for default (light & dark mode). If you use any theme other than light/dark, you need to add it in config.tailwind.js in daisyui.themes.

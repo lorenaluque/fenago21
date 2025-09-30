@@ -12,9 +12,9 @@ import { Metadata } from 'next';
 
 // Add metadata for SEO
 export const metadata: Metadata = {
-  title: 'FeNAgO - Agentic AI SaaS Platform Template',
-  description: 'The complete platform for building agentic AI-powered SaaS products—ideal for students, developers, startups, and entrepreneurs looking to innovate rapidly. In the near future, every traditional SaaS application will inevitably be surpassed by an Agentic SaaS solution, redefining the competitive landscape.',
-  keywords: 'agentic AI, SaaS template, AI platform, DrLee, AI development, FeNAgO, AI startup',
+  title: 'VIBE - Transform Your Business Vision Into Reality',
+  description: 'The enterprise-grade business planning system that turns scattered ideas into market-ready execution. Join 10,000+ entrepreneurs who have transformed their vision into reality with VIBE.',
+  keywords: 'business planning, business plan, entrepreneurship, startup planning, business strategy, VIBE, business framework',
 };
 
 export default function Home(): JSX.Element {
@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
         <Header />
       </Suspense>
       <main>
-        {/* FeNAgO - The complete platform for building agentic AI-powered SaaS products */}
+        {/* VIBE - Transform Your Business Vision Into Reality */}
         <Hero />
         <Problem />
         <FeaturesAccordion />
