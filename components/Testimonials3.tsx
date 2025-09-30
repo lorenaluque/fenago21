@@ -1,109 +1,134 @@
 import Image from "next/image";
-import { StaticImageData } from "next/image";
-import config from "@/config";
 
-// The list of your testimonials. It needs 3 items to fill the row.
-const list: {
-  username?: string;
-  name: string;
-  text: string;
-  img?: string | StaticImageData;
-}[] = [
+const testimonials = [
   {
-    // Optional, use for social media like Twitter. Does not link anywhere but cool to display
-    username: "marclou",
-    // REQUIRED
-    name: "Marc Lou",
-    // REQUIRED
-    text: "Really easy to use. The tutorials are really useful and explains how everything works. Hope to ship my next project really fast!",
-    // Optional, a statically imported image (usually from your public folder—recommended) or a link to the person's avatar. Shows a fallback letter if not provided
-    img: "https://pbs.twimg.com/profile_images/1514863683574599681/9k7PqDTA_400x400.jpg",
+    name: "Jennifer K.",
+    role: "Lead Data Scientist",
+    text: "I've tried every protein powder and coffee combo imaginable. This is the first that actually delivers sustained energy without the 3 PM crash. No bloating, no jitters—just clean focus when I need it most.",
+    rating: 5,
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jennifer"
   },
   {
-    username: "the_mcnaveen",
-    name: "Naveen",
-    text: "Setting up everything from the ground up is a really hard, and time consuming process. What you pay for will save your time for sure.",
+    name: "Marcus T.",
+    role: "Software Engineering Manager",
+    text: "The transparency is what sold me. Third-party tested for contaminants? Actual ingredient sourcing details? Finally, a brand that respects my need to know exactly what I'm putting in my body.",
+    rating: 5,
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus"
   },
   {
-    username: "wahab",
-    name: "Wahab Shaikh",
-    text: "Easily saves 15+ hrs for me setting up trivial stuff. Now, I can directly focus on shipping features rather than hours of setting up the same technologies from scratch. Feels like a super power! :D",
-  },
+    name: "Priya S.",
+    role: "Senior Product Manager",
+    text: "I was skeptical about another 'protein coffee' product, but the evidence-based formulation convinced me to try it. Three months in, my morning routine is simplified, my energy is consistent, and I genuinely feel better. Worth every penny.",
+    rating: 5,
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya"
+  }
 ];
-
-// A single testimonial, to be rendered in  a list
-const Testimonial = ({ i }: { i: number }) => {
-  const testimonial = list[i];
-
-  if (!testimonial) return null;
-
-  return (
-    <li key={i}>
-      <figure className="relative max-w-lg h-full p-6 md:p-10 bg-base-200 rounded-2xl max-md:text-sm flex flex-col">
-        <blockquote className="relative flex-1">
-          <p className="text-base-content/80 leading-relaxed">
-            {testimonial.text}
-          </p>
-        </blockquote>
-        <figcaption className="relative flex items-center justify-start gap-4 pt-4 mt-4 md:gap-8 md:pt-8 md:mt-8 border-t border-base-content/5">
-          <div className="w-full flex items-center justify-between gap-2">
-            <div>
-              <div className="font-medium text-base-content md:mb-0.5">
-                {testimonial.name}
-              </div>
-              {testimonial.username && (
-                <div className="mt-0.5 text-sm text-base-content/80">
-                  @{testimonial.username}
-                </div>
-              )}
-            </div>
-
-            <div className="overflow-hidden rounded-full bg-base-300 shrink-0">
-              {testimonial.img ? (
-                <Image
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
-                  src={list[i].img}
-                  alt={`${list[i].name}'s testimonial for ${config.appName}`}
-                  width={48}
-                  height={48}
-                />
-              ) : (
-                <span className="w-10 h-10 md:w-12 md:h-12 rounded-full flex justify-center items-center text-lg font-medium bg-base-300">
-                  {testimonial.name.charAt(0)}
-                </span>
-              )}
-            </div>
-          </div>
-        </figcaption>
-      </figure>
-    </li>
-  );
-};
 
 const Testimonials3 = () => {
   return (
-    <section id="testimonials">
-      <div className="py-24 px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
-          <div className="mb-8">
-            <h2 className="sm:text-5xl text-4xl font-extrabold text-base-content">
-              212 makers are already shipping faster!
-            </h2>
+    <section className="bg-brand-off-white py-24" id="testimonials">
+      <div className="max-w-7xl mx-auto px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-20 animate-fade-in-up">
+          <h2 className="font-heading font-bold text-4xl lg:text-5xl mb-6 text-brand-navy leading-tight">
+            Trusted by High-Performers Who Demand More
+          </h2>
+          
+          {/* Rating Display */}
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-brand-gold text-3xl">★</span>
+              ))}
+            </div>
+            <span className="text-2xl font-bold text-brand-navy">4.8</span>
+            <span className="text-text-light text-lg">/5</span>
           </div>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-base-content/80">
-            Don&apos;t take our word for it. Here&apos;s what they have to say
-            about ShipFast.
+          
+          <p className="text-text-light text-lg">
+            from <span className="font-semibold text-brand-navy">2,847</span> verified customers
           </p>
         </div>
 
-        <ul
-          role="list"
-          className="flex flex-col items-center lg:flex-row lg:items-stretch gap-6 lg:gap-8"
-        >
-          {[...Array(3)].map((e, i) => (
-            <Testimonial key={i} i={i} />
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={index}
+              className="testimonial-card animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              {/* Star Rating */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <span key={i} className="text-brand-gold text-xl">★</span>
+                ))}
+              </div>
+              
+              {/* Testimonial Text */}
+              <p className="text-text-body italic mb-8 leading-relaxed text-lg">
+                "{testimonial.text}"
+              </p>
+              
+              {/* Author Info */}
+              <div className="flex items-center gap-4 pt-6 border-t-2 border-brand-off-white">
+                <Image
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  width={56}
+                  height={56}
+                  className="rounded-full border-2 border-brand-teal"
+                />
+                <div>
+                  <p className="font-heading font-semibold text-brand-navy text-lg">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-sm text-text-light">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
+
+        {/* Stats Callout */}
+        <div className="bg-gradient-to-r from-brand-teal/10 via-brand-teal/5 to-brand-teal/10 border-2 border-brand-teal rounded-2xl p-10 text-center shadow-lg">
+          <p className="text-2xl lg:text-3xl font-bold text-brand-navy mb-3">
+            89% report noticeable improvement in sustained energy within the first week
+          </p>
+          <p className="text-text-light text-lg">
+            Based on customer survey of <span className="font-semibold text-brand-navy">500+</span> users
+          </p>
+        </div>
+
+        {/* Social Proof Badges */}
+        <div className="flex flex-wrap justify-center gap-6 mt-16">
+          <div className="flex items-center gap-3 bg-white px-6 py-4 rounded-xl shadow-md">
+            <div className="text-3xl">✓</div>
+            <div>
+              <p className="font-semibold text-brand-navy">10,000+</p>
+              <p className="text-sm text-text-light">Happy Customers</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3 bg-white px-6 py-4 rounded-xl shadow-md">
+            <div className="text-3xl">🔬</div>
+            <div>
+              <p className="font-semibold text-brand-navy">100%</p>
+              <p className="text-sm text-text-light">Third-Party Tested</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3 bg-white px-6 py-4 rounded-xl shadow-md">
+            <div className="text-3xl">⭐</div>
+            <div>
+              <p className="font-semibold text-brand-navy">4.8/5</p>
+              <p className="text-sm text-text-light">Average Rating</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,114 +1,117 @@
-"use client";
-
-import { useRef, useState } from "react";
-import type { JSX } from "react";
-
-// <FAQ> component is a lsit of <Item> component
-// Just import the FAQ & add your FAQ content to the const faqList arrayy below.
-
-interface FAQItemProps {
-  question: string;
-  answer: JSX.Element;
-}
-
-const faqList: FAQItemProps[] = [
+const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "Will this cause digestive discomfort like other protein powders?",
+    answer: "No. We use easily digestible, bioavailable protein sources and include natural digestive enzymes. Most users experience no bloating or discomfort. If you have specific sensitivities, our formula is soy-free, dairy-free, and gluten-free."
   },
   {
-    question: "Can I get a refund?",
-    answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
-      </p>
-    ),
+    question: "How much caffeine does this contain?",
+    answer: "Each serving contains 150mg of clean caffeine from organic coffee beans—equivalent to a standard cup of coffee. Combined with L-theanine, you get sustained energy without jitters or crashes."
   },
   {
-    question: "I have another question",
-    answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
-    ),
+    question: "What does 'third-party tested' mean?",
+    answer: "Every batch is independently tested by accredited laboratories for mycotoxins, heavy metals, and contaminants before it reaches you. We publish our test results and certifications on our website for complete transparency."
   },
+  {
+    question: "Can I use this if I'm following a specific diet (keto/paleo)?",
+    answer: "Our formula is compatible with keto, paleo, and most dietary approaches. Note: Our protein source is grass-fed collagen (not vegan). We're developing a plant-based version—join our waitlist to be notified."
+  },
+  {
+    question: "Will I be charged after my first order?",
+    answer: "Only if you choose the 'Subscribe & Save' option. Otherwise, it's a one-time purchase with no automatic charges. Subscriptions can be canceled or modified anytime from your account with just one click."
+  },
+  {
+    question: "How quickly will I notice results?",
+    answer: "Most users report improved sustained energy within 2-3 days of consistent use. Enhanced mental clarity and reduced afternoon brain fog typically become noticeable within the first week."
+  },
+  {
+    question: "What if I don't like it?",
+    answer: "We offer a 30-day money-back guarantee. If you're not completely satisfied, contact us for a full refund. We'll even cover return shipping. No questions asked, no hassle."
+  },
+  {
+    question: "Where is this made?",
+    answer: "Formulated in the USA in a GMP-certified facility with globally sourced, premium ingredients. All ingredients are traceable and transparently listed on our packaging and website."
+  }
 ];
-
-const FaqItem = ({ item }: { item: FAQItemProps }) => {
-  const accordion = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <li>
-      <button
-        className="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-        aria-expanded={isOpen}
-      >
-        <span
-          className={`flex-1 text-base-content ${isOpen ? "text-primary" : ""}`}
-        >
-          {item?.question}
-        </span>
-        <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center transition duration-200 ease-out ${
-              isOpen && "rotate-180"
-            }`}
-          />
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-              isOpen && "rotate-180 hidden"
-            }`}
-          />
-        </svg>
-      </button>
-
-      <div
-        ref={accordion}
-        className={`transition-all duration-300 ease-in-out opacity-80 overflow-hidden`}
-        style={
-          isOpen
-            ? { maxHeight: accordion?.current?.scrollHeight, opacity: 1 }
-            : { maxHeight: 0, opacity: 0 }
-        }
-      >
-        <div className="pb-5 leading-relaxed">{item?.answer}</div>
-      </div>
-    </li>
-  );
-};
 
 const FAQ = () => {
   return (
-    <section className="bg-base-200" id="faq">
-      <div className="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
-        <div className="flex flex-col text-left basis-1/2">
-          <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
+    <section className="bg-brand-off-white py-24" id="faq">
+      <div className="max-w-4xl mx-auto px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="font-heading font-bold text-4xl lg:text-5xl mb-6 text-brand-navy leading-tight">
+            Questions? We Have Answers.
+          </h2>
+          <p className="text-lg lg:text-xl text-text-light">
+            Everything you need to know about VibeCoffee
           </p>
         </div>
 
-        <ul className="basis-1/2">
-          {faqList.map((item, i) => (
-            <FaqItem key={i} item={item} />
+        {/* FAQ Accordion */}
+        <div className="space-y-4">
+          {faqList.map((faq, index) => (
+            <div 
+              key={index}
+              className="collapse collapse-plus bg-white shadow-md rounded-xl border-2 border-transparent hover:border-brand-teal transition-all duration-300"
+            >
+              <input 
+                type="radio" 
+                name="faq-accordion" 
+                id={`faq-${index}`}
+              />
+              <div className="collapse-title text-lg font-heading font-semibold text-brand-navy pr-12">
+                {faq.question}
+              </div>
+              <div className="collapse-content">
+                <p className="text-text-body leading-relaxed pt-4 text-base">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
+
+        {/* Contact Support */}
+        <div className="text-center mt-16 p-10 bg-gradient-to-br from-brand-navy to-brand-teal rounded-2xl shadow-luxury">
+          <h3 className="font-heading font-bold text-2xl text-white mb-4">
+            Still have questions?
+          </h3>
+          <p className="text-brand-light-grey mb-6 text-lg">
+            Our team is here to help you make the right choice for your health
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="btn bg-white text-brand-navy hover:bg-brand-off-white btn-lg font-heading font-semibold">
+              📧 Email Support
+            </button>
+            <button className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-brand-navy btn-lg font-heading font-semibold">
+              💬 Live Chat
+            </button>
+          </div>
+          <p className="text-sm text-brand-teal-light mt-6">
+            Average response time: Under 2 hours
+          </p>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="text-4xl mb-3">✓</div>
+            <p className="font-semibold text-brand-navy text-sm">Third-Party Tested</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="text-4xl mb-3">🌿</div>
+            <p className="font-semibold text-brand-navy text-sm">USDA Organic</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="text-4xl mb-3">🔬</div>
+            <p className="font-semibold text-brand-navy text-sm">Evidence-Based</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-xl shadow-md">
+            <div className="text-4xl mb-3">🇺🇸</div>
+            <p className="font-semibold text-brand-navy text-sm">Made in USA</p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,68 +1,92 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./styles/globals.css",
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      colors: {
+        // Primary Brand Colors
+        'brand-navy': '#1A2B3C',
+        'brand-charcoal': '#333333',
+        
+        // Neutral Colors
+        'brand-white': '#FFFFFF',
+        'brand-off-white': '#F8F8F8',
+        'brand-light-grey': '#CCCCCC',
+        
+        // Accent Colors
+        'brand-teal': '#008080',
+        'brand-teal-light': '#00A080',
+        'brand-gold': '#B8860B',
+        'brand-bronze': '#CD7F32',
+        
+        // Text Colors
+        'text-body': '#333333',
+        'text-light': '#666666',
+      },
+      fontFamily: {
+        'heading': ['Montserrat', 'sans-serif'],
+        'body': ['Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'display': '72px',
+        'h1-desktop': '56px',
+        'h1-mobile': '36px',
+        'h2-desktop': '42px',
+        'h2-mobile': '28px',
+        'h3-desktop': '32px',
+        'h3-mobile': '24px',
+      },
       backgroundImage: {
-        gradient:
-          "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",
+        'gradient-luxury': 'linear-gradient(135deg, #1A2B3C 0%, #008080 100%)',
+        'gradient-hero': 'linear-gradient(135deg, #1A2B3C 0%, #333333 100%)',
+        'gradient-cta': 'linear-gradient(135deg, #1A2B3C 0%, #008080 50%, #1A2B3C 100%)',
+      },
+      boxShadow: {
+        'luxury': '0 10px 40px rgba(0, 128, 128, 0.15)',
+        'luxury-lg': '0 20px 60px rgba(0, 128, 128, 0.2)',
+        'gold': '0 8px 32px rgba(184, 134, 11, 0.2)',
       },
       animation: {
-        opacity: "opacity 0.25s ease-in-out",
-        appearFromRight: "appearFromRight 300ms ease-in-out",
-        wiggle: "wiggle 1.5s ease-in-out infinite",
-        popup: "popup 0.25s ease-in-out",
-        shimmer: "shimmer 3s ease-out infinite alternate",
+        'fade-in-up': 'fadeInUp 0.6s ease-out',
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-in-right': 'slideInRight 0.5s ease-out',
       },
       keyframes: {
-        opacity: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        appearFromRight: {
-          "0%": { opacity: 0.3, transform: "translate(15%, 0px);" },
-          "100%": { opacity: 1, transform: "translate(0);" },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        wiggle: {
-          "0%, 20%, 80%, 100%": {
-            transform: "rotate(0deg)",
-          },
-          "30%, 60%": {
-            transform: "rotate(-2deg)",
-          },
-          "40%, 70%": {
-            transform: "rotate(2deg)",
-          },
-          "45%": {
-            transform: "rotate(-4deg)",
-          },
-          "55%": {
-            transform: "rotate(4deg)",
-          },
-        },
-        popup: {
-          "0%": { transform: "scale(0.8)", opacity: 0.8 },
-          "50%": { transform: "scale(1.1)", opacity: 1 },
-          "100%": { transform: "scale(1)", opacity: 1 },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "0 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+        slideInRight: {
+          '0%': { opacity: '0', transform: 'translateX(20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require('daisyui')],
   daisyui: {
-    // Light & dark themes are added by default (it switches automatically based on OS settings)
-    // You can add another theme among the list of 30+
-    // Add "data-theme='theme_name" to any HTML tag to enable the 'theme_name' theme.
-    // https://daisyui.com/
-    themes: ["light", "dark"],
+    themes: [
+      {
+        vibecoffee: {
+          "primary": "#008080",
+          "secondary": "#B8860B",
+          "accent": "#00A080",
+          "neutral": "#333333",
+          "base-100": "#FFFFFF",
+          "info": "#1A2B3C",
+          "success": "#00A080",
+          "warning": "#B8860B",
+          "error": "#CD7F32",
+        },
+      },
+    ],
   },
 };
